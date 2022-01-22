@@ -2,8 +2,9 @@
 {% block content %}
     {% for post in posts %}
         <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{post.author.profile.image.url}}">
             <div class="media-body">
-                <h2><a class="article-title" href="#">{{post.title}}</h2></a>
+                <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{post.title}}</h2></a>
                 <div class="article-metadata">
                     <a class="mr-2" href="#">by {{ post.author }} </a>
                     <small class="text-muted">on {{ post.date_posted|date:"d F, Y" }}</small>

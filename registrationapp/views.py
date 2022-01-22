@@ -14,3 +14,5 @@ def register(request):
         form=UserRegisterForm()
 
     return render(request, 'registrationapp/try.html', {'form':form})
+
+

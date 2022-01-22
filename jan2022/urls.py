@@ -20,13 +20,18 @@ from homeapp import views as home_views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
+from homeapp.views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', regist_views.register, name='register'),
     path('profile/', home_views.profile, name='profile'),
     path('login/', auth_views.LoginView.as_view(template_name='registrationapp/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='registrationapp/logout.html'), name='logout'),
-    path('home/', home_views.home, name='home')
+    path('home/', PostListView.as_view(), name='home'),
+    path('post-detail/<int:pk>', PostDetailView.as_view(), name='post-detail'),
+    path('newpost/', PostCreateView.as_view(), name='post-create'),
+    path('post-detail/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
+    path('post-detail/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete')
 ]
 
 
